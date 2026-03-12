@@ -1,0 +1,28 @@
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <h1 class="name">{{ currentPage() || 'Dhruv Dixit' }}</h1>
+      <p class="title" *ngIf="!currentPage()">Full Stack Developer</p>
+    </div>
+
+    <button 
+      class="hamburger" 
+      [class.open]="isMenuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu" 
+      [attr.aria-expanded]="isMenuOpen()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul 
+      class="nav-menu" 
+      [class.open]="isMenuOpen()"
+      role="menubar">
+      <li class="nav-item" role="none" *ngFor="let item of filteredNavItems">
+        <a class="nav-link" [href]="item.href" (click)="closeMenu()" role="menuitem">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

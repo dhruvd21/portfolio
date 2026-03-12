@@ -1,0 +1,160 @@
+/* Fade-in and slide-up keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility class to apply animation */
+.animate-fade-up {
+  opacity: 0; /* start hidden */
+  animation: fadeInUp 1.5s ease-out forwards; /* animate to visible */
+}
+
+/* Skills Section */
+.skills-container {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Apply animation to skills container */
+.skills-container.animate {
+  animation-delay: 0.3s; /* optional delay */
+  animation-name: fadeInUp;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  border: 0.5px solid rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 25px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.3s; /* optional stagger effect */
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.skill-card h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.skill-card p {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Projects Section */
+.projects-container {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.projects-container.animate {
+  animation-delay: 0.3s;
+  animation-name: fadeInUp;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.project-card {
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.3s; /* optional stagger */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.tech-stack {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.project-details {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.project-details li {
+  margin-bottom: 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .skill-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .skill-card p {
+    font-size: 0.9rem;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+  }
+
+  .project-card {
+    padding: 20px 15px;
+  }
+
+  .project-details {
+    font-size: 0.9rem;
+  }
+}

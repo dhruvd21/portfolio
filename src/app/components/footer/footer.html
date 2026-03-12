@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a *ngFor="let link of socialLinks" 
+         [href]="link.url" 
+         [title]="link.label"
+         class="social-link"
+         target="_blank"
+         rel="noopener noreferrer">
+        <img *ngIf="link.imagePath" [src]="link.imagePath" [alt]="link.label" class="social-icon-img">
+        <span *ngIf="!link.imagePath" class="social-icon">{{ link.icon }}</span>
+      </a>
+    </div>
+    <p class="footer-text">&copy; 2026 My Portfolio. All rights reserved.</p>
+  </div>
+</footer>
