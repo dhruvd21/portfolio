@@ -127,6 +127,16 @@
   background: rgba(255, 255, 255, 0.55);
 }
 
+.experience-kicker {
+  margin: 0 0 10px;
+  padding-left: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.45);
+}
+
 .timeline-date {
   font-size: 1.1rem;
   font-weight: 700;
