@@ -201,10 +201,33 @@
     top: 20px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 6px;
     width: 44px;
     height: 44px;
     padding: 10px;
     z-index: 1000;
+  }
+
+  .hamburger:not(.open) {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+  }
+
+  .hamburger span {
+    background: #000000 !important;
+    height: 3px;
+    width: 26px;
+    border-radius: 2px;
+    opacity: 1;
+    margin: 0;
+  }
+
+  .hamburger:not(.open) span {
+    position: static;
+    opacity: 1;
+    transform: none;
   }
 
   .navbar.menu-open .hamburger {
@@ -227,6 +250,7 @@
     left: 50%;
     top: 50%;
     transform-origin: center;
+    background: #000000;
   }
 
   .hamburger.open span:nth-child(1) {
