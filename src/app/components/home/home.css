@@ -178,7 +178,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-copy {
@@ -215,6 +215,10 @@
   line-height: 1.75;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.86);
+}
+
+.about-bio--tight {
+  margin-top: -6px;
 }
 
 .about-chips {
@@ -297,6 +301,10 @@
   line-height: 1.7;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.82);
+}
+
+.about-card-text--tight {
+  margin-top: 10px;
 }
 
 @media (max-width: 920px) {

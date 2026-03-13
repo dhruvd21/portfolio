@@ -16,6 +16,7 @@
     <a class="about-copy about-link" routerLink="/skills" aria-label="Go to Skills">
       <h3 class="about-title">Tech</h3>
       <p class="about-bio">{{ aboutMe.techSummary }}</p>
+      <p class="about-bio about-bio--tight">{{ aboutMe.techExtra }}</p>
 
       <div class="about-chips" aria-label="Core skills">
         <span class="about-chip" *ngFor="let chip of aboutMe.techChips">{{ chip }}</span>
@@ -26,6 +27,8 @@
       <a class="about-card about-card--flat about-link" routerLink="/experience" aria-label="Go to Experience">
         <p class="about-card-kicker">Experience</p>
         <p class="about-card-text">{{ aboutMe.experienceSummary }}</p>
+        <p class="about-card-text about-card-text--tight">{{ aboutMe.experienceExtra }}</p>
+        <p class="about-card-text about-card-text--tight">{{ aboutMe.experienceExtra2 }}</p>
         <div class="about-chips about-chips--tight" aria-label="Experience highlights">
           <span class="about-chip" *ngFor="let chip of aboutMe.experienceChips">{{ chip }}</span>
         </div>

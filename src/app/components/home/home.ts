@@ -13,6 +13,8 @@ export class Home {
     title: 'Java Full Stack Developer & AI-Powered Problem Solver',
     techSummary:
       'Full stack developer with a passion for solving complex problems through code. With expertise in Java, DSA (Data Structures & Algorithms), and AWS, I craft robust web applications and serverless architectures.',
+    techExtra:
+      'I care about clean architecture, performance, and building features end-to-end with strong fundamentals and practical engineering tradeoffs.',
     techChips: ['Java Full Stack', 'Data Structures & Algorithms', 'AI Tools & Integration'],
     experienceChips: [
       'AWS Serverless Architecture',
@@ -25,6 +27,12 @@ export class Home {
     },
     experienceSummary:
       'Software Developer at LTIMindtree building enterprise apps across Java/Spring and Angular. Previously interned at DCM Shriram, focusing on backend optimization and cloud/serverless fundamentals.'
+    ,
+    experienceExtra:
+      'I collaborate in Agile teams, ship reliable changes, and focus on maintainability through modular code and clear interfaces.'
+    ,
+    experienceExtra2:
+      'Comfortable owning features from API design to UI polish, with attention to security, performance, and user experience.'
   };
 
   scrollToAbout() {

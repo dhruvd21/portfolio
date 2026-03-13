@@ -10,6 +10,12 @@ import { CommonModule } from '@angular/common';
 export class Footer {
   socialLinks = [
     {
+      label: 'Gmail',
+      icon: '✉️',
+      imagePath: 'social-icons/gmail.png',
+      url: 'mailto:dhruvdixit2113@gmail.com'
+    },
+    {
       label: 'Instagram',
       icon: '📷',
       imagePath: 'social-icons/instagram.png',
