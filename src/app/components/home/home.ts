@@ -1,30 +1,39 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
   aboutMe = {
     title: 'Java Full Stack Developer & AI-Powered Problem Solver',
-    headline: 'Building scalable, intelligent solutions with Java, AWS, and cutting-edge technologies',
-    bio: `I'm a full stack developer with a passion for solving complex problems through code. With expertise in Java, DSA (Data Structures & Algorithms), and AWS, I craft robust web applications and serverless architectures that drive real business value. Currently at LTIMindtree, leveraging ServiceNow and cloud technologies to deliver enterprise solutions.`,
-    skills: [
-      'Java & Full Stack Development',
-      'Data Structures & Algorithms',
+    techSummary:
+      'Full stack developer with a passion for solving complex problems through code. With expertise in Java, DSA (Data Structures & Algorithms), and AWS, I craft robust web applications and serverless architectures.',
+    techChips: ['Java Full Stack', 'Data Structures & Algorithms', 'AI Tools & Integration'],
+    experienceChips: [
       'AWS Serverless Architecture',
       'ServiceNow Technologies',
-      'AI Tools & Integration',
-      'Web Application Development'
+      'Web Application Development',
     ],
     keyProject: {
       name: 'InvestrTrack',
       description: 'Built a full-stack investment platform where investors can upload investment opportunities and potential partners can discover and inquire about them. Architected with Java backend, modern frontend, and AWS cloud infrastructure.'
     },
-    philosophy: 'Code is not just about making things work—it\'s about making things efficient, scalable, and elegant. I\'m obsessed with DSA and optimization because every millisecond matters.'
+    experienceSummary:
+      'Software Developer at LTIMindtree building enterprise apps across Java/Spring and Angular. Previously interned at DCM Shriram, focusing on backend optimization and cloud/serverless fundamentals.'
   };
+
+  scrollToAbout() {
+    const element = document.getElementById('about');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
 scrollToContact() {
   const element = document.getElementById('contact');
   if (element) {
@@ -32,16 +41,17 @@ scrollToContact() {
   }
 }
   explorePortfolio() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Add zoom animation class to navbar
     const navbar = document.querySelector('.navbar');
-    if (navbar) {
-      navbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      navbar.classList.add('navbar-zoom');
-      
-      // Remove the animation class after animation completes
-      setTimeout(() => {
-        navbar.classList.remove('navbar-zoom');
-      }, 2500);
-    }
+    if (!navbar) return;
+
+    navbar.classList.add('navbar-zoom');
+
+    // Remove the animation class after animation completes
+    setTimeout(() => {
+      navbar.classList.remove('navbar-zoom');
+    }, 2500);
   }
 }
