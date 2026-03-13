@@ -82,8 +82,8 @@ export class Navbar {
 
   navItems = [
     { label: 'Home', href: '/home' },
-    { label: 'Resume', href: '/resume' },
+    { label: 'Experience', href: '/experience' },
     { label: 'Skills', href: '/skills' },
-    { label: 'Experience', href: '/experience' }
+    { label: 'Resume', href: '/resume' }
   ];
 }
