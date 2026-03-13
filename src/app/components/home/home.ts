@@ -35,6 +35,7 @@ scrollToContact() {
     // Add zoom animation class to navbar
     const navbar = document.querySelector('.navbar');
     if (navbar) {
+      navbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
       navbar.classList.add('navbar-zoom');
       
       // Remove the animation class after animation completes
