@@ -118,7 +118,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: #ffffff;
+  background: #000000;
   margin: 4px 0;
   border-radius: 2px;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -136,22 +136,46 @@
     align-self: flex-start;
   }
 
+  .navbar.menu-open .nav-brand {
+    display: none;
+  }
+
+  .navbar.menu-open .nav-inner {
+    border-bottom: none;
+  }
+
   .nav-menu {
     position: fixed;
     left: 0;
     right: 0;
     top: 64px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
     flex-direction: column;
     gap: 0;
     padding: 8px 0;
     transform: translateY(-120%);
-    transition: transform 0.28s ease;
-    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.28s ease, opacity 0.2s ease, visibility 0.2s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .nav-menu.open {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .navbar.menu-open .nav-menu {
+    top: 0;
+    height: 100dvh;
+    padding-top: 92px;
+    padding-bottom: 24px;
+    overflow: auto;
   }
 
   .nav-item {
@@ -163,6 +187,10 @@
     border-radius: 0;
   }
 
+  .nav-link:active {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
   .nav-link::after {
     display: none;
   }
@@ -172,10 +200,38 @@
     position: absolute;
     right: 24px;
     top: 20px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+
+  .navbar.menu-open .hamburger {
+    position: fixed;
+    right: max(34px, calc(env(safe-area-inset-right) + 12px));
+    top: max(18px, calc(env(safe-area-inset-top) + 12px));
+    z-index: 1000;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+  }
+
+  .hamburger.open {
+    position: relative;
+  }
+
+  .hamburger.open span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: center;
   }
 
   .hamburger.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   .hamburger.open span:nth-child(2) {
@@ -183,7 +239,7 @@
   }
 
   .hamburger.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 }
 

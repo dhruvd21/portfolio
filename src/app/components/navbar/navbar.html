@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="Main navigation">
+<nav class="navbar" [class.menu-open]="isMenuOpen()" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <div class="nav-brand">
       <h1 class="name">{{ currentPage() || 'Dhruv Dixit' }}</h1>
