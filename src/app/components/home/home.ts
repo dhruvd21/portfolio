@@ -25,7 +25,12 @@ export class Home {
     },
     philosophy: 'Code is not just about making things work—it\'s about making things efficient, scalable, and elegant. I\'m obsessed with DSA and optimization because every millisecond matters.'
   };
-
+scrollToContact() {
+  const element = document.getElementById('contact');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
   explorePortfolio() {
     // Add zoom animation class to navbar
     const navbar = document.querySelector('.navbar');

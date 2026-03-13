@@ -12,27 +12,35 @@
   transform: translateY(-60px);
 }
 
-.explore-btn {
-  color: #000000;
-  text-decoration: none;
-  padding: 14px 30px;
-  border-radius: 6px;
-  position: relative;
+.hero-actions {
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.hero-actions button {
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-weight: 300;
   font-size: 1.2rem;
-  display: inline-block;
-  overflow: hidden;
+  padding: 14px 30px;
+  border-radius: 6px;
+  min-width: 120px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
   transition: all 0.3s ease;
+  text-align: center;
+}
+
+.explore-btn {
+  color: #000000;
   background: transparent;
   border: 0.5px solid rgba(0, 0, 0, 0.6);
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  cursor: pointer;
-  margin-top: 30px;
-  z-index: 10;
-  position: relative;
+  display: inline-block;
+  overflow: hidden;
   animation: fadeInUp 1.5s ease-out 0.3s both;
-  min-width: 120px;
-  text-align: center;
 }
 
 .explore-btn:hover {
@@ -56,6 +64,35 @@
   animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
 }
 
+.contact-btn {
+  border: none;
+  background: #151515;
+  color: #ffffff;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  animation: fadeInUp 1.5s ease-out 0.3s both;
+}
+
+.contact-btn:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.contact-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: #ffffff;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.contact-btn:hover::after {
+  width: 100%;
+  animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+}
+
 @keyframes heartbeat116 {
   0%, 100% {
     width: 100%;
@@ -63,6 +100,12 @@
   50% {
     width: 60%;
   }
+}
+.contact-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 40px;
 }
 
 .welcome-text h1 {
