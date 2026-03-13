@@ -22,7 +22,7 @@
 
 .navbar {
   width: 100%;
-  background: transparent;
+  background: #ffffff;
   font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   position: sticky;
   top: 0;
