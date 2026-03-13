@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'HKGroteskWide';
-  src: url('/fonts/HKGroteskWide-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-
 /* Fade In Up Animation */
 @keyframes fadeInUp {
   from {
@@ -21,7 +14,7 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 
   opacity: 0;
   animation: fadeInUp 1.2s ease-out forwards;
@@ -29,73 +22,77 @@
 
 .resume-header {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
   padding-bottom: 20px;
 }
 
-.resume-header h1 {
-  font-size: 2.5rem;
-  color: #ffffff;
+.resume-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.resume-title {
+  font-size: clamp(2rem, 2.2vw + 1.2rem, 3rem);
+  color: #000000;
   margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.resume-subtitle {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+  max-width: 60ch;
 }
 
 .download-btn {
-  color: #000000;
-  padding: 12px 0;
+  color: #ffffff;
+  padding: 12px 16px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   position: relative;
-  background: transparent;
-  border: none;
-  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #151515;
+  border: 0.5px solid rgba(0, 0, 0, 0.25);
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-size: 1rem;
   cursor: pointer;
   overflow: hidden;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
 }
 
 .download-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
+  filter: invert(1);
 }
 
-.download-btn::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  background: #000000;
-  width: 0%;
-  transition: width 0.3s ease;
-}
-
-.download-btn:hover::after {
-  width: 100%;
-  animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
-}
-
-@keyframes heartbeat116 {
-  0%, 100% {
-    width: 100%;
-  }
-  50% {
-    width: 60%;
-  }
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
+  background: #0f0f0f;
 }
 
 .resume-viewer {
   width: 100%;
-  height: 900px;
+  height: min(900px, 75vh);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(107, 90, 74, 0.1);
-  background-color: #f7f2e8;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+  background-color: #f7f7f7;
+  border: 0.5px solid rgba(0, 0, 0, 0.18);
 
   opacity: 0;
   animation: fadeInUp 1.2s ease-out 0.3s forwards;
@@ -114,16 +111,28 @@
   }
 
   .resume-header {
-    flex-direction: column;
-    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 12px 0 16px;
+    margin: 0;
     align-items: flex-start;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
   }
 
-  .resume-header h1 {
-    font-size: 1.8rem;
+  .resume-subtitle {
+    font-size: 0.95rem;
   }
 
   .resume-viewer {
     height: 600px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .download-btn {
+    transition: none;
   }
 }
