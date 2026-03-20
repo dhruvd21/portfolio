@@ -118,14 +118,27 @@ export class Experience implements AfterViewInit, OnDestroy {
 
     const rect = stack.getBoundingClientRect();
     const viewportHeight = Math.max(1, window.innerHeight);
-    const sectionProgress = this.clamp((viewportHeight - rect.top) / (viewportHeight + rect.height), 0, 1);
+    const rawSectionProgress = this.clamp(
+      (viewportHeight - rect.top) / (viewportHeight + rect.height),
+      0,
+      1
+    );
+    const sectionProgress = this.progressCurve(rawSectionProgress);
+    const shrinkPerCard = 0.02;
+    const progressDelay = 0.38;
 
     const nextScales = new Array(total).fill(1);
     for (let index = 0; index < total; index += 1) {
       const start = index / total;
       const localProgress = this.clamp((sectionProgress - start) / Math.max(0.0001, 1 - start), 0, 1);
-      const targetScale = 1 - (total - index) * 0.05;
-      nextScales[index] = this.lerp(1, targetScale, localProgress);
+      const delayedProgress = this.clamp(
+        (localProgress - progressDelay) / Math.max(0.0001, 1 - progressDelay),
+        0,
+        1
+      );
+      const easedProgress = this.easeOutCubic(delayedProgress);
+      const targetScale = Math.max(0.88, 1 - (total - index) * shrinkPerCard);
+      nextScales[index] = this.lerp(1, targetScale, easedProgress);
     }
 
     this.cardScales = nextScales;
@@ -138,5 +151,15 @@ export class Experience implements AfterViewInit, OnDestroy {
 
   private lerp(start: number, end: number, progress: number): number {
     return start + (end - start) * progress;
+  }
+
+  private easeOutCubic(value: number): number {
+    const normalizedValue = this.clamp(value, 0, 1);
+    return 1 - Math.pow(1 - normalizedValue, 3);
+  }
+
+  private progressCurve(value: number): number {
+    const normalizedValue = this.clamp(value, 0, 1);
+    return Math.pow(normalizedValue, 2.2);
   }
 }

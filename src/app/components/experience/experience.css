@@ -35,7 +35,7 @@
 .experience-hero {
   text-align: center;
   opacity: 0;
-  animation: experienceSectionEnter 0.68s cubic-bezier(0.22, 0.78, 0.22, 1) forwards;
+  animation: experienceSectionEnter 1.35s cubic-bezier(0.18, 0.8, 0.22, 1) forwards;
 }
 
 .experience-eyebrow {
@@ -71,7 +71,7 @@
   justify-content: space-between;
   gap: 12px;
   opacity: 0;
-  animation: experienceSectionEnter 0.68s cubic-bezier(0.22, 0.78, 0.22, 1) 90ms forwards;
+  animation: experienceSectionEnter 1.35s cubic-bezier(0.18, 0.8, 0.22, 1) 260ms forwards;
 }
 
 .experience-counter {
@@ -124,7 +124,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform 0.22s linear, box-shadow 0.22s linear;
+  transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
   will-change: transform;
   transform: translateZ(0);
   transform-origin: top center;
@@ -138,25 +138,25 @@
   gap: 16px;
   min-height: 100%;
   opacity: 0;
-  transform: translateY(24px);
-  filter: blur(4px);
-  animation: experienceCardEnter 0.78s cubic-bezier(0.22, 0.78, 0.22, 1) forwards;
+  transform: translateY(32px);
+  filter: blur(5px);
+  animation: experienceCardEnter 1.8s cubic-bezier(0.18, 0.8, 0.22, 1) forwards;
 }
 
 .experience-stack .experience-card:nth-of-type(1) .experience-card-inner {
-  animation-delay: 130ms;
+  animation-delay: 300ms;
 }
 
 .experience-stack .experience-card:nth-of-type(2) .experience-card-inner {
-  animation-delay: 210ms;
+  animation-delay: 500ms;
 }
 
 .experience-stack .experience-card:nth-of-type(3) .experience-card-inner {
-  animation-delay: 290ms;
+  animation-delay: 700ms;
 }
 
 .experience-stack .experience-card:nth-of-type(4) .experience-card-inner {
-  animation-delay: 370ms;
+  animation-delay: 900ms;
 }
 
 .experience-card.active {
@@ -310,7 +310,7 @@
   gap: 8px;
   margin-top: 6px;
   opacity: 0;
-  animation: experienceSectionEnter 0.68s cubic-bezier(0.22, 0.78, 0.22, 1) 240ms forwards;
+  animation: experienceSectionEnter 1.35s cubic-bezier(0.18, 0.8, 0.22, 1) 520ms forwards;
 }
 
 .dot {
