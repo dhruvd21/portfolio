@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'Morganite';
-  src: url('/fonts/HKGroteskWide-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-
 :root {
   --beige-1: #f7f2e8;
   --beige-2: #e9dfc7;
@@ -17,14 +10,18 @@
   margin: 0;
   padding: 0;
 }
+.navbar {
+  background-color: #f7f2e8 !important;
+}
 
 .navbar {
   width: 100%;
-  background: #ffffff;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--beige-1);
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   position: sticky;
   top: 0;
   z-index: 999;
+  opacity: 1;
   box-shadow: none;
   transition: transform 0.3s ease-in-out;
 }
@@ -40,6 +37,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 24px;
+  background: var(--beige-1);
+  opacity: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
 }
@@ -55,7 +54,7 @@
   font-weight: 300;
   color: #000000;
   margin: 0;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .title {
@@ -63,7 +62,7 @@
   color: #000000;
   margin: 0;
   opacity: 0.8;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .nav-menu {
@@ -148,23 +147,22 @@
     left: 0;
     right: 0;
     top: 64px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
+    background: var(--beige-1);
+    backdrop-filter: none;
     flex-direction: column;
     gap: 0;
     padding: 8px 0;
     transform: translateY(-120%);
-    opacity: 0;
+    opacity: 1;
     visibility: hidden;
     pointer-events: none;
-    transition: transform 0.28s ease, opacity 0.2s ease, visibility 0.2s ease;
+    transition: transform 0.28s ease, visibility 0.2s ease;
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .nav-menu.open {
     transform: translateY(0);
-    opacity: 1;
     visibility: visible;
     pointer-events: auto;
   }
@@ -210,7 +208,7 @@
   }
 
   .hamburger:not(.open) {
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--beige-1);
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 999px;
   }
@@ -236,7 +234,7 @@
     top: max(18px, calc(env(safe-area-inset-top) + 12px));
     z-index: 1000;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--beige-1);
     border: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
   }

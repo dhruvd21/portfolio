@@ -1,19 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 html {
   scroll-behavior: smooth;
-}
-/* Import Ranade fonts */
-@font-face {
-  font-family: 'Ranade';
-  src: url('/fonts/Ranade-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
+  background: #f7f2e8;
 }
 
+:root {
+  --kovid-bg: #f7f2e8;
+  --kovid-bg-soft: #e9dfc7;
+}
+/* Import Kovid-style primary font */
 @font-face {
-  font-family: 'Ranade';
-  src: url('/fonts/Ranade-Bold.otf') format('opentype');
-  font-weight: 700;
+  font-family: 'HKGroteskWide';
+  src: url('/fonts/HKGroteskWide-Medium.otf') format('opentype');
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -21,9 +20,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  background: var(--kovid-bg);
   min-height: 100vh;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 /* Ensure app content sits on top of background */

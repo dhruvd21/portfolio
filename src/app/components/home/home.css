@@ -40,14 +40,14 @@
 
 .scroll-quote__text {
   fill: rgba(0, 0, 0, 0.92);
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-weight: 400;
   font-size: 8px;
   letter-spacing: 0.065em;
   text-transform: uppercase;
 }
 .hero-actions button {
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-weight: 300;
   font-size: 1.2rem;
   padding: 14px 30px;
@@ -61,7 +61,7 @@
 }
 
 .about-actions .explore-btn {
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-weight: 300;
   font-size: 1.2rem;
   padding: 14px 30px;
@@ -152,7 +152,7 @@
   font-size: 4rem;
   font-weight: 400;
   color: #000000;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   margin: 0;
   animation: fadeInUp 1.5s ease-out;
 }
@@ -266,7 +266,7 @@
   letter-spacing: -0.02em;
   font-weight: 420;
   color: #000000;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .about-inner {
@@ -349,7 +349,7 @@
   line-height: 1;
   background: rgba(255, 255, 255, 0.6);
   color: rgba(0, 0, 0, 0.85);
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .about-aside {
@@ -400,7 +400,7 @@
   font-size: 1.25rem;
   font-weight: 520;
   color: #000000;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'HKGroteskWide', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .about-card-text {
