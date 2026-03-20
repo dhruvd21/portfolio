@@ -1,90 +1,62 @@
-<div class="experience-container">
-  <p class="intro-text">In my professional career I have worked in industry level projects across multiple companies</p>
-  
-  <div class="timeline">
-    <section class="experience-block">
-      <div class="experience-grid">
-        <article class="experience-card">
-          <div class="timeline-date">10/2025 – Present</div>
-          <div class="timeline-company">
-            <h2 class="job-title">Software Developer</h2>
-            <span class="company">LTIMindtree</span>
-            <span class="location">Bangalore, India</span>
-          </div>
-          <div class="experience-tags" aria-label="Tech stack">
-            <span class="experience-tag">Java</span>
-            <span class="experience-tag">Spring Boot</span>
-            <span class="experience-tag">Spring Security</span>
-            <span class="experience-tag">Angular</span>
-            <span class="experience-tag">REST APIs</span>
-            <span class="experience-tag">Spring Data JPA</span>
-          </div>
-          <div class="timeline-description">
-            <p>
-              As a full-stack software developer at LTIMindree, I have been actively involved in designing, developing, and maintaining enterprise-grade applications that serve diverse business needs. My work spans the entire technology stack, where I leverage Java and Spring Boot to create robust and scalable backend systems, while utilizing Angular to build responsive, dynamic, and user-friendly interfaces.
-            </p>
-          </div>
-        </article>
+<section class="experience-shell">
+  <header class="experience-hero">
+    <p class="experience-eyebrow">Career timeline</p>
+    <h1 class="experience-title">Experience</h1>
+    <p class="intro-text">Scroll to move through each role, one focused story at a time.</p>
+  </header>
 
-        <article class="experience-card experience-card--alt">
-          <div class="key-contributions">
-            <h3>Key contributions include:</h3>
-            <ul>
-              <li>designing and implementing RESTful APIs that enable seamless and secure communication between frontend and backend systems</li>
-              <li>integrating with databases using Spring Data JPA for efficient data management</li>
-              <li>ensuring high application performance through optimized backend logic and responsive UI components</li>
-              <li>implemented HTTP and JSON-based API integrations, enabling smooth data flow across multiple modules and improving overall application reliability</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience-card experience-card--wide">
-          <p class="work-environment">
-            Working in an Agile/Scrum environment, I actively participate in daily stand-ups, sprint planning sessions, and peer code reviews, collaborating closely with cross-functional teams to deliver high-quality software on schedule. I focus not only on development but also on maintaining best practices for scalable architecture, modular code design, and maintainable project structure, ensuring long-term project sustainability.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="experience-block">
-      <div class="experience-grid">
-        <article class="experience-card">
-          <div class="timeline-date">08/2024 – 10/2024</div>
-          <div class="timeline-company">
-            <h2 class="job-title">Software Developer Intern</h2>
-            <span class="company">DCM Shriram Ltd</span>
-            <span class="location">Uttar Pradesh, India</span>
-          </div>
-          <div class="experience-tags" aria-label="Tech stack">
-            <span class="experience-tag">Django</span>
-            <span class="experience-tag">AWS Lambda</span>
-            <span class="experience-tag">DynamoDB</span>
-            <span class="experience-tag">S3</span>
-            <span class="experience-tag">IAM</span>
-          </div>
-          <div class="timeline-description">
-            <p>
-              During my internship at DCM Sriram, I contributed to backend development for a supply chain management system, where I optimized APIs built with Django utilizing AWS to improve efficiency and reliability. I worked on integrating real-time vendor data streams, enabling faster data processing and reducing bottlenecks in the supply chain workflow.
-            </p>
-          </div>
-        </article>
-
-        <article class="experience-card experience-card--alt">
-          <div class="key-contributions">
-            <h3>Key responsibilities included:</h3>
-            <ul>
-              <li>deployed serverless solutions on AWS, including Lambda functions, DynamoDB, and IAM configuration, which reduced server costs while maintaining high uptime and reliability</li>
-              <li>strengthened data security protocols through encryption, role-based access control, and secure IAM configurations, ensuring compliance with organizational security standards</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience-card experience-card--wide">
-          <p class="work-environment">
-            This experience allowed me to apply practical knowledge of cloud infrastructure, API development, and secure backend engineering, while collaborating with a team to deliver scalable solutions that enhanced operational efficiency. My contributions led to measurable improvements in processing efficiency, cost reduction, and system reliability, providing a strong foundation for my transition into full-time software development roles.
-          </p>
-        </article>
-      </div>
-    </section>
+  <div class="experience-meta">
+    <div class="experience-counter">
+      <span class="counter-current">{{ currentIndex + 1 }}</span>
+      <span class="counter-divider">/</span>
+      <span class="counter-total">{{ experiences.length }}</span>
+    </div>
+    <p class="experience-hint">Scroll</p>
   </div>
-</div>
+
+  <div class="experience-stack" #experienceStack>
+    <article
+      class="experience-card"
+      *ngFor="let experience of experiences; let i = index; trackBy: trackByIndex"
+      [style.top]="cardTop(i)"
+      [style.transform]="cardTransform(i)"
+      [style.zIndex]="10 + i"
+      [class.active]="i === currentIndex"
+    >
+      <div class="card-top">
+        <span class="card-date">{{ experience.date }}</span>
+        <span class="card-location">{{ experience.location }}</span>
+      </div>
+
+      <div class="card-title">
+        <h2 class="card-role">{{ experience.role }}</h2>
+        <p class="card-company">{{ experience.company }}</p>
+      </div>
+
+      <div class="card-tags" aria-label="Tech stack">
+        <span class="card-tag" *ngFor="let tag of experience.tags">{{ tag }}</span>
+      </div>
+
+      <p class="card-summary">{{ experience.summary }}</p>
+
+      <div class="card-highlights">
+        <h3>{{ experience.highlightsTitle }}</h3>
+        <ul>
+          <li *ngFor="let item of experience.highlights">{{ item }}</li>
+        </ul>
+      </div>
+
+      <div class="card-footer">
+        <p>{{ experience.environment }}</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="experience-dots" aria-hidden="true">
+    <span
+      class="dot"
+      *ngFor="let item of experiences; let i = index"
+      [class.active]="i === currentIndex"
+    ></span>
+  </div>
+</section>

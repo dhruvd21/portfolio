@@ -5,15 +5,32 @@
       <button class="explore-btn" (click)="scrollToAbout()">About Me</button>
       <button class="contact-btn" (click)="scrollToContact()">Contact Me</button>
     </div>
-    
   </div>
   
 </div>
 
+<section class="scroll-quote" aria-label="Quote" #quoteWrapper>
+  <svg class="scroll-quote__svg" viewBox="0 0 250 90" role="img" aria-label="Quote wave">
+    <path id="homeQuoteCurve" class="scroll-quote__curve" d="m0,88.5c61.37,0,61.5-68,126.5-68,58,0,51,68,123,68"></path>
+    <text class="scroll-quote__text">
+      <textPath href="#homeQuoteCurve" [attr.startOffset]="quoteStartOffset">
+        {{ quoteText }}
+      </textPath>
+    </text>
+  </svg>
+</section>
+
 <section class="about-section" aria-label="About me" id="about">
   <h2 class="about-section-title">About Me</h2>
-  <div class="about-inner">
-    <a class="about-copy about-link" routerLink="/skills" aria-label="Go to Skills">
+  <div class="about-inner about-stack" #aboutStack>
+    <a
+      class="about-copy about-link about-stack-card"
+      routerLink="/skills"
+      aria-label="Go to Skills"
+      [style.top]="aboutCardTop(0)"
+      [style.transform]="aboutCardTransform(0)"
+      [style.zIndex]="20"
+    >
       <h3 class="about-title">Tech</h3>
       <p class="about-bio">{{ aboutMe.techSummary }}</p>
       <p class="about-bio about-bio--tight">{{ aboutMe.techExtra }}</p>
@@ -23,17 +40,41 @@
       </div>
     </a>
 
-    <aside class="about-aside" aria-label="Highlights">
-      <a class="about-card about-card--flat about-link" routerLink="/experience" aria-label="Go to Experience">
-        <p class="about-card-kicker">Experience</p>
-        <p class="about-card-text">{{ aboutMe.experienceSummary }}</p>
-        <p class="about-card-text about-card-text--tight">{{ aboutMe.experienceExtra }}</p>
-        <p class="about-card-text about-card-text--tight">{{ aboutMe.experienceExtra2 }}</p>
-        <div class="about-chips about-chips--tight" aria-label="Experience highlights">
-          <span class="about-chip" *ngFor="let chip of aboutMe.experienceChips">{{ chip }}</span>
-        </div>
-      </a>
-    </aside>
+    <a
+      class="about-card about-link about-stack-card"
+      routerLink="/experience"
+      aria-label="Go to Experience"
+      [style.top]="aboutCardTop(1)"
+      [style.transform]="aboutCardTransform(1)"
+      [style.zIndex]="21"
+    >
+      <p class="about-card-kicker">Experience</p>
+      <p class="about-card-text">{{ aboutMe.experienceSummary }}</p>
+      <p class="about-card-text about-card-text--tight">{{ aboutMe.experienceExtra }}</p>
+      <p class="about-card-text about-card-text--tight">{{ aboutMe.experienceExtra2 }}</p>
+      <div class="about-chips about-chips--tight" aria-label="Experience highlights">
+        <span class="about-chip" *ngFor="let chip of aboutMe.experienceChips">{{ chip }}</span>
+      </div>
+    </a>
+
+    <a
+      class="about-card about-link about-stack-card"
+      routerLink="/skills"
+      aria-label="Go to Skills Snapshot"
+      [style.top]="aboutCardTop(2)"
+      [style.transform]="aboutCardTransform(2)"
+      [style.zIndex]="22"
+    >
+      <p class="about-card-kicker">Skills Snapshot</p>
+      <p class="about-skill-paragraph">
+        <ng-container *ngFor="let skill of aboutSkills; let last = last">
+          <strong>{{ skill.title }}:</strong> {{ skill.summary }}<span *ngIf="!last"> · </span>
+        </ng-container>
+      </p>
+      <div class="about-chips about-chips--tight about-skill-chips" aria-label="Skills tech stack">
+        <span class="about-chip" *ngFor="let chip of aboutSkillStackChips">{{ chip }}</span>
+      </div>
+    </a>
   </div>
 
   <div class="about-actions">

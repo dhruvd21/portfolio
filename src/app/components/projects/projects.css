@@ -1,8 +1,18 @@
-/* Fade-in and slide-up keyframes */
-@keyframes fadeInUp {
+:host {
+  display: block;
+  --surface: rgba(255, 255, 255, 0.97);
+  --surface-soft: rgba(255, 255, 255, 0.92);
+  --border: rgba(0, 0, 0, 0.14);
+  --ink: #000000;
+  --ink-soft: rgba(0, 0, 0, 0.78);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+@keyframes sectionRise {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -10,160 +20,130 @@
   }
 }
 
-/* Utility class to apply animation */
 .animate-fade-up {
-  opacity: 0; /* start hidden */
-  animation: fadeInUp 1.5s ease-out forwards; /* animate to visible */
+  opacity: 0;
+  animation: sectionRise 0.9s var(--ease-out) forwards;
 }
 
-/* Skills Section */
-.skills-container {
-  padding: 80px 20px 0;
-  max-width: 1000px;
+.skills-container,
+.projects-container {
+  width: min(1200px, calc(100% - 54px));
   margin: 0 auto;
-  text-align: center;
 }
 
-/* Apply animation to skills container */
-.skills-container.animate {
-  animation-delay: 0.3s; /* optional delay */
-  animation-name: fadeInUp;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
+.skills-container {
+  padding: 88px 0 18px;
+}
+
+.projects-container {
+  padding: 30px 0 90px;
 }
 
 .section-title {
-  font-size: 3rem;
-  font-weight: 400;
+  margin: 0 auto 34px;
   text-align: center;
-  margin-bottom: 50px;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: clamp(2.1rem, 2.6vw + 1rem, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 430;
+  color: var(--ink);
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
 
 .skill-card {
-  border: 0.5px solid rgba(0, 0, 0, 0.22);
-  border-radius: 14px;
-  padding: 26px 22px 22px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-  animation-delay: 0.3s; /* optional stagger effect */
-  background:
-    radial-gradient(700px 240px at 20% 0%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.48));
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  padding: 26px 22px 22px;
+  background:
+    radial-gradient(760px 260px at 20% 0%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 60%),
+    linear-gradient(180deg, var(--surface), var(--surface-soft));
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  animation: sectionRise 0.72s var(--ease-out) forwards;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
 }
 
-.skill-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0, 0, 0, 0.32);
-  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.12);
-}
-
-.skill-card::before {
+.skill-card::before,
+.project-accent {
   content: '';
   position: absolute;
   inset: 0 auto 0 0;
-  width: 10px;
+  width: 9px;
   background: linear-gradient(180deg, #0f0f0f, rgba(15, 15, 15, 0.12));
 }
 
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.007);
+  box-shadow: 0 28px 62px rgba(0, 0, 0, 0.14);
+  border-color: rgba(0, 0, 0, 0.24);
+}
+
 .skill-card h3 {
-  font-size: 1.5rem;
-  font-weight: 520;
-  margin-bottom: 10px;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin: 0 0 12px;
   padding-left: 12px;
+  font-size: 1.36rem;
+  font-weight: 560;
+  color: var(--ink);
 }
 
 .skill-card p {
-  font-size: 1rem;
-  font-weight: 300;
   margin: 0;
-  line-height: 1.6;
   padding-left: 12px;
-  color: rgba(0, 0, 0, 0.82);
+  font-size: 1rem;
+  font-weight: 320;
+  line-height: 1.64;
+  color: var(--ink-soft);
 }
 
-/* Gentle stagger for the 6 cards */
 .skills-grid .skill-card:nth-child(1) { animation-delay: 0.12s; }
-.skills-grid .skill-card:nth-child(2) { animation-delay: 0.18s; }
-.skills-grid .skill-card:nth-child(3) { animation-delay: 0.24s; }
-.skills-grid .skill-card:nth-child(4) { animation-delay: 0.30s; }
-.skills-grid .skill-card:nth-child(5) { animation-delay: 0.36s; }
-.skills-grid .skill-card:nth-child(6) { animation-delay: 0.42s; }
-
-/* Projects Section */
-.projects-container {
-  padding: 40px 20px 80px;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.projects-container.animate {
-  animation-delay: 0.3s;
-  animation-name: fadeInUp;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-}
+.skills-grid .skill-card:nth-child(2) { animation-delay: 0.17s; }
+.skills-grid .skill-card:nth-child(3) { animation-delay: 0.22s; }
+.skills-grid .skill-card:nth-child(4) { animation-delay: 0.27s; }
+.skills-grid .skill-card:nth-child(5) { animation-delay: 0.32s; }
+.skills-grid .skill-card:nth-child(6) { animation-delay: 0.37s; }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 75px;
+  gap: 34px;
   align-items: stretch;
 }
 
 .project-card {
-  border: 0.5px solid rgba(0, 0, 0, 0.22);
-  border-radius: 14px;
-  padding: 26px 22px 22px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-  animation-delay: 0.3s; /* optional stagger */
-  background:
-    radial-gradient(800px 280px at 20% 0%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.45));
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
-}
-
-.projects-grid .project-card:nth-child(1) {
-  animation-delay: 0.15s;
-}
-
-.projects-grid .project-card:nth-child(2) {
-  animation-delay: 0.28s;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0, 0, 0, 0.32);
-  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.12);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px 22px;
+  background:
+    radial-gradient(820px 280px at 20% 0%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 60%),
+    linear-gradient(180deg, var(--surface), var(--surface-soft));
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  animation: sectionRise 0.78s var(--ease-out) forwards;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
 }
 
 .project-card--alt {
   background:
-    radial-gradient(800px 280px at 80% 0%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.45));
+    radial-gradient(820px 280px at 78% 0%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 60%),
+    linear-gradient(180deg, var(--surface), var(--surface-soft));
 }
 
-.project-accent {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 10px;
-  background: linear-gradient(180deg, #0f0f0f, rgba(15, 15, 15, 0.12));
+.projects-grid .project-card:nth-child(1) { animation-delay: 0.14s; }
+.projects-grid .project-card:nth-child(2) { animation-delay: 0.24s; }
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.006);
+  box-shadow: 0 28px 62px rgba(0, 0, 0, 0.14);
+  border-color: rgba(0, 0, 0, 0.24);
 }
 
 .project-header {
@@ -172,75 +152,57 @@
 
 .project-kicker {
   margin: 0 0 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.58);
 }
 
 .project-title {
-  font-size: 1.8rem;
-  font-weight: 520;
   margin: 0 0 14px;
-  font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: clamp(1.38rem, 1.1vw + 1rem, 1.85rem);
+  line-height: 1.22;
+  font-weight: 560;
+  color: var(--ink);
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 9px;
   margin: 0 0 18px;
   padding-left: 0;
 }
 
 .tag {
-  border: 0.5px solid rgba(0, 0, 0, 0.22);
+  border: 0.5px solid rgba(0, 0, 0, 0.18);
   border-radius: 999px;
   padding: 8px 12px;
-  font-size: 0.92rem;
-  font-weight: 300;
+  font-size: 0.89rem;
+  font-weight: 340;
   line-height: 1;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.86);
+  color: rgba(0, 0, 0, 0.86);
 }
 
 .project-details {
-  font-size: 1rem;
-  font-weight: 300;
   margin: 0;
   padding-left: 28px;
+  font-size: 0.99rem;
+  font-weight: 320;
+  line-height: 1.62;
+  color: var(--ink-soft);
   list-style-type: disc;
 }
 
 .project-details li {
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 30px;
-  }
-
-  .skill-card h3 {
-    font-size: 1.3rem;
-  }
-
-  .skill-card p {
-    font-size: 0.9rem;
-  }
-
-  .project-title {
-    font-size: 1.4rem;
-  }
-
-  .project-card {
-    padding: 20px 15px;
-  }
-
-  .project-details {
-    font-size: 0.9rem;
+@media (max-width: 1080px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -250,16 +212,50 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .skill-card {
-    transition: none;
-    animation: none;
-    opacity: 1;
+@media (max-width: 768px) {
+  .skills-container {
+    padding-top: 70px;
   }
 
+  .projects-container {
+    padding-bottom: 70px;
+  }
+
+  .section-title {
+    margin-bottom: 24px;
+    font-size: clamp(1.8rem, 6vw, 2.45rem);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-card,
   .project-card {
-    transition: none;
+    border-radius: 16px;
+    padding: 22px 18px 18px;
+  }
+
+  .skill-card h3 {
+    font-size: 1.24rem;
+  }
+
+  .skill-card p,
+  .project-details {
+    font-size: 0.95rem;
+  }
+
+  .project-title {
+    font-size: 1.32rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .skill-card,
+  .project-card {
     animation: none;
     opacity: 1;
+    transition: none;
   }
 }
