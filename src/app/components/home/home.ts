@@ -17,7 +17,7 @@ export class Home implements AfterViewInit, OnDestroy {
   private readonly quoteScrollListener = () => this.scheduleQuoteUpdate();
   private readonly quoteResizeListener = () => this.scheduleQuoteUpdate();
 
-  readonly quoteText = 'Controlling complexity is the essence of computer programming';
+  readonly quoteText = "The most expensive words in coding are 'It would be cool if'";
   quoteStartOffset = '0%';
   aboutCardScales: number[] = [1, 1, 1];
   aboutSkills = [
@@ -144,7 +144,7 @@ export class Home implements AfterViewInit, OnDestroy {
     // Matches Framer's ["start end","end start"] progress behavior used on the reference site.
     const progressRaw = (viewportHeight - rect.top) / (viewportHeight + rect.height);
     const progress = Math.max(0, Math.min(1, progressRaw));
-    const startOffset = -40 + 80 * progress;
+    const startOffset = 40 - 80 * progress;
     this.quoteStartOffset = `${startOffset.toFixed(1)}%`;
   }
 
