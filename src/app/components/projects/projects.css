@@ -20,6 +20,19 @@
   }
 }
 
+@keyframes skillsPageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.992);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 @keyframes sheenSweep {
   0% {
     transform: translateX(-135%) skewX(-18deg);
@@ -61,6 +74,11 @@
 .projects-container {
   width: min(1200px, calc(100% - 54px));
   margin: 0 auto;
+  opacity: 0;
+  transform: translateY(26px) scale(0.992);
+  filter: blur(4px);
+  animation: skillsPageEnter 0.92s var(--ease-out) forwards;
+  will-change: opacity, transform, filter;
 }
 
 .skills-container {
@@ -74,6 +92,7 @@
 }
 
 .projects-container {
+  animation-delay: 140ms;
   padding: 52px clamp(14px, 2.3vw, 28px) 36px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 26px;
@@ -393,6 +412,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
+  .skills-container,
+  .projects-container,
   .reveal-on-scroll,
   .skill-card,
   .project-card {
