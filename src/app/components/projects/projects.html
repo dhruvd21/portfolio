@@ -1,41 +1,31 @@
-<div class="skills-container animate-fade-up">
-  <h2 class="section-title">My core competencies and capabilities in tech front</h2>
+<div class="skills-container">
+  <h2 class="section-title reveal-on-scroll" #revealItem style="--reveal-delay: 30ms;">
+    My core competencies and capabilities in tech front
+  </h2>
 
   <div class="skills-grid">
-    <div class="skill-card ">
-      <h3>Programming & Backend</h3>
-      <p>Java, Spring Boot, Spring Security, REST APIs, AWS Lambda</p>
-    </div>
-    <div class="skill-card ">
-      <h3>Frontend</h3>
-      <p>Angular, HTML, CSS, Responsive Design, HTTP/JSON Integration</p>
-    </div>
-    <div class="skill-card ">
-      <h3>Cloud & DevOps</h3>
-      <p>AWS Lambda, DynamoDB, S3, API Gateway, IAM, Serverless Architecture</p>
-    </div>
-    <div class="skill-card ">
-      <h3>Database & Data Management</h3>
-      <p>Spring Data JPA, DynamoDB, SQL, NoSQL, Real-time Data Integration</p>
-    </div>
-    <div class="skill-card ">
-      <h3>Security & Authentication</h3>
-      <p>JWT Authentication, Role-Based Access Control, Secure API Communication, Encryption</p>
-    </div>
-    <div class="skill-card ">
-      <h3>Workflow & Collaboration</h3>
-      <p>Agile/Scrum, Daily Stand-ups, Sprint Planning, Code Reviews, Git</p>
-    </div>
+    <article
+      class="skill-card skill-card--compact reveal-on-scroll"
+      *ngFor="let group of skillGroups; let i = index; trackBy: trackByIndex"
+      #revealItem
+      [style.--reveal-delay]="(90 + i * 70) + 'ms'"
+    >
+      <h3>{{ group.title }}</h3>
+      <ul class="skill-list">
+        <li *ngFor="let item of group.items">{{ item }}</li>
+      </ul>
+    </article>
   </div>
 </div>
 
-<div class="projects-container animate-fade-up">
-  <h3 class="section-title">Some of the projects where I've put my skills to showcase</h3>
+<div class="projects-container">
+  <h3 class="section-title reveal-on-scroll" #revealItem style="--reveal-delay: 30ms;">
+    Some of the projects where I've put my skills to showcase
+  </h3>
 
   <div class="projects-grid">
     <!-- Project 1: InvestTrack -->
-    <article class="project-card">
-      <div class="project-accent" aria-hidden="true"></div>
+    <article class="project-card reveal-on-scroll" #revealItem style="--reveal-delay: 110ms;">
       <header class="project-header">
         <p class="project-kicker">Featured Project</p>
         <h3 class="project-title">InvestTrack – Secure Investment Management & Enquiry Portal</h3>
@@ -58,8 +48,7 @@
     </article>
 
     <!-- Project 2: Cloud-Native Backend -->
-    <article class="project-card project-card--alt">
-      <div class="project-accent" aria-hidden="true"></div>
+    <article class="project-card project-card--alt reveal-on-scroll" #revealItem style="--reveal-delay: 180ms;">
       <header class="project-header">
         <p class="project-kicker">Serverless Architecture</p>
         <h3 class="project-title">Cloud-Native Backend System (AWS Serverless)</h3>

@@ -23,31 +23,33 @@
       [style.zIndex]="10 + i"
       [class.active]="i === currentIndex"
     >
-      <div class="card-top">
-        <span class="card-date">{{ experience.date }}</span>
-        <span class="card-location">{{ experience.location }}</span>
-      </div>
+      <div class="experience-card-inner">
+        <div class="card-top">
+          <span class="card-date">{{ experience.date }}</span>
+          <span class="card-location">{{ experience.location }}</span>
+        </div>
 
-      <div class="card-title">
-        <h2 class="card-role">{{ experience.role }}</h2>
-        <p class="card-company">{{ experience.company }}</p>
-      </div>
+        <div class="card-title">
+          <h2 class="card-role">{{ experience.role }}</h2>
+          <p class="card-company">{{ experience.company }}</p>
+        </div>
 
-      <div class="card-tags" aria-label="Tech stack">
-        <span class="card-tag" *ngFor="let tag of experience.tags">{{ tag }}</span>
-      </div>
+        <div class="card-tags" aria-label="Tech stack">
+          <span class="card-tag" *ngFor="let tag of experience.tags">{{ tag }}</span>
+        </div>
 
-      <p class="card-summary">{{ experience.summary }}</p>
+        <p class="card-summary">{{ experience.summary }}</p>
 
-      <div class="card-highlights">
-        <h3>{{ experience.highlightsTitle }}</h3>
-        <ul>
-          <li *ngFor="let item of experience.highlights">{{ item }}</li>
-        </ul>
-      </div>
+        <div class="card-highlights">
+          <h3>{{ experience.highlightsTitle }}</h3>
+          <ul>
+            <li *ngFor="let item of experience.highlights">{{ item }}</li>
+          </ul>
+        </div>
 
-      <div class="card-footer">
-        <p>{{ experience.environment }}</p>
+        <div class="card-footer">
+          <p>{{ experience.environment }}</p>
+        </div>
       </div>
     </article>
   </div>

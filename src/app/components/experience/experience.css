@@ -8,8 +8,34 @@
   font-family: 'Ranade', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
+@keyframes experienceSectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes experienceCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 .experience-hero {
   text-align: center;
+  opacity: 0;
+  animation: experienceSectionEnter 0.68s cubic-bezier(0.22, 0.78, 0.22, 1) forwards;
 }
 
 .experience-eyebrow {
@@ -44,6 +70,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  opacity: 0;
+  animation: experienceSectionEnter 0.68s cubic-bezier(0.22, 0.78, 0.22, 1) 90ms forwards;
 }
 
 .experience-counter {
@@ -102,6 +130,33 @@
   transform-origin: top center;
   backface-visibility: hidden;
   contain: paint;
+}
+
+.experience-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100%;
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  animation: experienceCardEnter 0.78s cubic-bezier(0.22, 0.78, 0.22, 1) forwards;
+}
+
+.experience-stack .experience-card:nth-of-type(1) .experience-card-inner {
+  animation-delay: 130ms;
+}
+
+.experience-stack .experience-card:nth-of-type(2) .experience-card-inner {
+  animation-delay: 210ms;
+}
+
+.experience-stack .experience-card:nth-of-type(3) .experience-card-inner {
+  animation-delay: 290ms;
+}
+
+.experience-stack .experience-card:nth-of-type(4) .experience-card-inner {
+  animation-delay: 370ms;
 }
 
 .experience-card.active {
@@ -254,6 +309,8 @@
   justify-content: center;
   gap: 8px;
   margin-top: 6px;
+  opacity: 0;
+  animation: experienceSectionEnter 0.68s cubic-bezier(0.22, 0.78, 0.22, 1) 240ms forwards;
 }
 
 .dot {
@@ -314,6 +371,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .experience-hero,
+  .experience-meta,
+  .experience-dots,
+  .experience-card-inner {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
   .experience-card {
     transition: none;
   }

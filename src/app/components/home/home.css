@@ -157,6 +157,30 @@
   animation: fadeInUp 1.5s ease-out;
 }
 
+.hero-word-rotator {
+  --hero-line-height: 1.12em;
+  display: block;
+  width: 13ch;
+  margin-inline: auto;
+  height: var(--hero-line-height);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: baseline;
+  font-weight: 400;
+}
+
+.hero-word-item {
+  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  line-height: var(--hero-line-height);
+  text-align: center;
+  animation: heroWordFade 3.8s ease-in-out infinite;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -166,6 +190,53 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes heroWordFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  8% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  18% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 0.22;
+    transform: translateY(-2px);
+  }
+  42% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.hero-word-item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.hero-word-item:nth-child(2) {
+  animation-delay: 0.76s;
+}
+
+.hero-word-item:nth-child(3) {
+  animation-delay: 1.52s;
+}
+
+.hero-word-item:nth-child(4) {
+  animation-delay: 2.28s;
+}
+
+.hero-word-item:nth-child(5) {
+  animation-delay: 3.04s;
 }
 
 /* Mobile Responsive */
@@ -448,6 +519,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-word-item {
+    animation: none;
+    opacity: 0;
+    transform: none;
+  }
+
+  .hero-word-item:first-child {
+    opacity: 1;
+  }
+
   .about-copy,
   .about-card {
     transition: none;
