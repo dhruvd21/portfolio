@@ -66,11 +66,11 @@
       [style.zIndex]="22"
     >
       <p class="about-card-kicker">Skills Snapshot</p>
-      <p class="about-skill-paragraph">
-        <ng-container *ngFor="let skill of aboutSkills; let last = last">
-          <strong>{{ skill.title }}:</strong> {{ skill.summary }}<span *ngIf="!last"> · </span>
-        </ng-container>
-      </p>
+      <div class="about-skill-paragraphs">
+        <p class="about-skill-paragraph" *ngFor="let skill of aboutSkills">
+          <strong>{{ skill.title }}:</strong> {{ skill.summary }}
+        </p>
+      </div>
       <div class="about-chips about-chips--tight about-skill-chips" aria-label="Skills tech stack">
         <span class="about-chip" *ngFor="let chip of aboutSkillStackChips">{{ chip }}</span>
       </div>

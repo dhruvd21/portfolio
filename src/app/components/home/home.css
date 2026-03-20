@@ -352,6 +352,12 @@
   color: rgba(0, 0, 0, 0.82);
 }
 
+.about-skill-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .about-skill-paragraph strong {
   font-weight: 560;
 }

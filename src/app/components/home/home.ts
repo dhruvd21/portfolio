@@ -24,7 +24,7 @@ export class Home implements AfterViewInit, OnDestroy {
     {
       title: 'Programming & Backend',
       summary:
-        'Production backend services in Java/Spring Boot with secure REST APIs and clean service design.',
+        'Production backend services in Java/Spring Boot with secure REST APIs, JWT auth, and clean service design.',
     },
     {
       title: 'Frontend',
@@ -34,12 +34,7 @@ export class Home implements AfterViewInit, OnDestroy {
     {
       title: 'Cloud & DevOps',
       summary:
-        'AWS serverless stack with Lambda, API Gateway, DynamoDB, S3, and IAM for scalable delivery.',
-    },
-    {
-      title: 'Data & Security',
-      summary:
-        'Spring Data JPA, DynamoDB, JWT auth, and role-based access control with performance-focused data flows.',
+        'AWS serverless stack with Lambda, API Gateway, DynamoDB, S3, IAM, and performance-focused data workflows.',
     },
   ];
   aboutSkillStackChips = ['Java', 'Spring Boot', 'Angular', 'AWS Lambda', 'DynamoDB', 'JWT'];
