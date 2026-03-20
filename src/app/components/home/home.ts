@@ -71,11 +71,11 @@ export class Home implements AfterViewInit, OnDestroy {
   };
 
   scrollToAbout() {
-    this.slowScrollToElement('about');
+    this.slowScrollToElement('about', -280, 1.4);
   }
 
   scrollToContact() {
-    this.slowScrollToElement('contact');
+    this.slowScrollToElement('contact', -80, 1.4);
   }
   explorePortfolio() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -174,7 +174,7 @@ export class Home implements AfterViewInit, OnDestroy {
     this.aboutCardScales = nextScales;
   }
 
-  private slowScrollToElement(elementId: string): void {
+  private slowScrollToElement(elementId: string, offsetPx = 0, pixelsPerMs = 2.2): void {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
     const element = document.getElementById(elementId);
     if (!element) return;
@@ -185,18 +185,24 @@ export class Home implements AfterViewInit, OnDestroy {
     }
 
     const startY = window.scrollY || window.pageYOffset;
-    const targetY = element.getBoundingClientRect().top + startY;
+    const rawTargetY = element.getBoundingClientRect().top + startY + offsetPx;
+    const maxScrollY = Math.max(
+      0,
+      document.documentElement.scrollHeight - window.innerHeight
+    );
+    const targetY = this.clamp(rawTargetY, 0, maxScrollY);
     const distance = targetY - startY;
     if (Math.abs(distance) < 1) return;
 
-    const pixelsPerMs = 2.2;
-    const durationMs = Math.max(260, Math.min(900, Math.abs(distance) / pixelsPerMs));
+    const safeSpeed = this.clamp(pixelsPerMs, 0.6, 6);
+    const durationMs = Math.max(320, Math.min(1400, Math.abs(distance) / safeSpeed));
     const startTime = performance.now();
 
     const tick = (now: number): void => {
       const elapsed = now - startTime;
       const progress = Math.min(1, elapsed / durationMs);
-      window.scrollTo({ top: startY + distance * progress, behavior: 'auto' });
+      const easedProgress = this.easeInOutCubic(progress);
+      window.scrollTo({ top: startY + distance * easedProgress, behavior: 'auto' });
       if (progress < 1) {
         this.scrollRafId = requestAnimationFrame(tick);
       } else {
@@ -213,5 +219,12 @@ export class Home implements AfterViewInit, OnDestroy {
 
   private lerp(start: number, end: number, progress: number): number {
     return start + (end - start) * progress;
+  }
+
+  private easeInOutCubic(progress: number): number {
+    if (progress < 0.5) {
+      return 4 * progress * progress * progress;
+    }
+    return 1 - Math.pow(-2 * progress + 2, 3) / 2;
   }
 }
