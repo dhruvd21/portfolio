@@ -79,12 +79,14 @@
   font-size: 1.1rem;
   font-weight: 500;
   transition: all 0.3s ease;
+  transition-property: color, transform, opacity;
   position: relative;
   padding: 8px 0;
 }
 
 .nav-link:hover {
   color: #000000;
+  transform: scale(1.05);
 }
 
 .nav-link::after {
